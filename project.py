@@ -4,6 +4,8 @@ import argparse
 
 # Get device
 device = "cuda" if torch.cuda.is_available() else "cpu"
+# Initialize TTS
+tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 
 # List available TTS models
 # print(TTS().list_models())
@@ -37,14 +39,11 @@ def make_ref_path(emotion="neutral", gender="female", strong_intensity=False):
     return base_path + actor + '/03-01-' + emotion_ref_dict[emotion] + '-' + intensity + '-01-01-' + actor_id + '.wav'
 
 
-# Initialize TTS
-tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
-
 def emotional_tts(text_to_say, emotion="neutral", gender="female", strong_intensity=False, output_path="/Users/wiktoriamronga/TTS/output/ref1.wav", tts_module=tts):
     # Get reference audio file path
     emotion_reference = make_ref_path(emotion=emotion, gender=gender, strong_intensity=strong_intensity)
     # Text to speech to a file
-    tts.tts_to_file(text=text_to_say, speaker_wav=emotion_reference, language="en", file_path=output_path)
+    tts_module.tts_to_file(text=text_to_say, speaker_wav=emotion_reference, language="en", file_path=output_path)
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Emotional TTS Command Line Tool")
@@ -56,20 +55,21 @@ def parse_arguments():
 
     return parser.parse_args()
 
+
 def main():
     args = parse_arguments()
 
     # Get device
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    #device = "cuda" if torch.cuda.is_available() else "cpu"
 
     # Initialize TTS
-    tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+    #tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 
     # Generate output path
     output_path = output_base_path + args.output_path
 
     # Generate TTS
-    emotional_tts(args.text, args.emotion, args.gender, args.intensity, output_path)
+    emotional_tts(args.text, args.emotion, args.gender, args.intensity, output_path, tts)
 
 if __name__ == "__main__":
     main()
