@@ -6,9 +6,11 @@ import argparse
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # List available TTS models
-print(TTS().list_models())
+# print(TTS().list_models())
 
+# Adjust these paths to your own
 base_path = '/Users/wiktoriamronga/TTS/resources/'
+output_base_path = "/Users/wiktoriamronga/TTS/output/"
 
 emotion_ref_dict = {
     'neutral': '01',
@@ -36,28 +38,13 @@ def make_ref_path(emotion="neutral", gender="female", strong_intensity=False):
 
 
 # Initialize TTS
-#tts = TTS("tts_models/en/ljspeech/glow-tts").to(device)
+tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 
-def emotional_tts(text_to_say, emotion="neutral", gender="female", strong_intensity=False, output_path="/Users/wiktoriamronga/TTS/output/ref1.wav"):
-    
-    tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
-    
-    #emotion_reference="/Users/wiktoriamronga/TTS/resources/ref1.wav"
+def emotional_tts(text_to_say, emotion="neutral", gender="female", strong_intensity=False, output_path="/Users/wiktoriamronga/TTS/output/ref1.wav", tts_module=tts):
+    # Get reference audio file path
     emotion_reference = make_ref_path(emotion=emotion, gender=gender, strong_intensity=strong_intensity)
-    # Run TTS
-    # Text to speech list of amplitude values as output
-    # wav = tts.tts(text=text_to_say, speaker_wav=emotion_reference, language="en")
-
     # Text to speech to a file
     tts.tts_to_file(text=text_to_say, speaker_wav=emotion_reference, language="en", file_path=output_path)
-
-
-
-#output_name = "angry.wav"
-#output_file = output_base_path + output_name
-#text="Hello, it's Victoria, and I am working on TTS."
-#emotional_tts(text, "angry", "male", strong_intensity=True, output_path=output_file)
-
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Emotional TTS Command Line Tool")
@@ -78,7 +65,6 @@ def main():
     # Initialize TTS
     tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 
-    output_base_path = "/Users/wiktoriamronga/TTS/output/"
     # Generate output path
     output_path = output_base_path + args.output_path
 
