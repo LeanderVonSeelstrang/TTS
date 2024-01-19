@@ -1,1 +1,5 @@
+EmoDB Dataset
 https://www.kaggle.com/datasets/piyushagni5/berlin-database-of-emotional-speech-emodb?resource=download
+
+RAVDESS Emotional speech audio
+https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-speech-audio/data
