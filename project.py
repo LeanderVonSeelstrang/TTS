@@ -21,7 +21,7 @@ emotion_ref_dict = {
 }
 
 def make_ref_path(emotion="neutral", gender="female", strong_intensity=False):
-    if gender is "female":
+    if gender == "female":
         actor = "RAVDESS_Actor_02_(english+female)/"
         actor_id = '02'
     else:
@@ -50,5 +50,8 @@ def emotional_tts(text_to_say, emotion="neutral", gender="female", strong_intens
     # Text to speech to a file
     tts.tts_to_file(text=text_to_say, speaker_wav=emotion_reference, language="en", file_path=output_path)
 
+output_base_path = "/Users/wiktoriamronga/TTS/output/"
+output_name = "angry.wav"
+output_file = output_base_path + output_name
 text="Hello, it's Victoria, and I am working on TTS."
-emotional_tts(text)
+emotional_tts(text, "angry", "male", strong_intensity=True, output_path=output_file)
