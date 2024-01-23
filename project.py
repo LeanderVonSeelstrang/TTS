@@ -2,6 +2,9 @@ import torch
 from TTS.api import TTS
 import argparse
 
+import pathlib
+import os
+
 # Get device
 device = "cuda" if torch.cuda.is_available() else "cpu"
 # Initialize TTS
@@ -10,9 +13,15 @@ tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 # List available TTS models
 # print(TTS().list_models())
 
+tts_path = pathlib.Path(__file__).parent.resolve()
+
 # Adjust these paths to your own
-base_path = '/Users/wiktoriamronga/TTS/resources/'
-output_base_path = "/Users/wiktoriamronga/TTS/output/"
+#base_path = '/Users/wiktoriamronga/TTS/resources/'
+#output_base_path = "/Users/wiktoriamronga/TTS/output/"
+
+base_path = os.path.join(tts_path, "resources")
+output_base_path = os.path.join(tts_path, "output")
+
 
 emotion_ref_dict = {
     'neutral': '01',
@@ -58,12 +67,6 @@ def parse_arguments():
 
 def main():
     args = parse_arguments()
-
-    # Get device
-    #device = "cuda" if torch.cuda.is_available() else "cpu"
-
-    # Initialize TTS
-    #tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 
     # Generate output path
     output_path = output_base_path + args.output_path
