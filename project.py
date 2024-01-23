@@ -19,8 +19,8 @@ tts_path = pathlib.Path(__file__).parent.resolve()
 #base_path = '/Users/wiktoriamronga/TTS/resources/'
 #output_base_path = "/Users/wiktoriamronga/TTS/output/"
 
-base_path = os.path.join(tts_path, "resources")
-output_base_path = os.path.join(tts_path, "output")
+base_path = os.path.join(tts_path, "resources/")
+output_base_path = os.path.join(tts_path, "output/")
 
 
 emotion_ref_dict = {
@@ -79,3 +79,5 @@ if __name__ == "__main__":
     
 # Example Usage
 # python project.py "Testing the emotional TTS command line tool." --emotion happy --gender female --output-path happy_output.wav
+    
+# python project.py "Ewww. Testing the emotional TTS command line tool." --emotion disgust --gender male --output-path disgust_output.wav --intensity
