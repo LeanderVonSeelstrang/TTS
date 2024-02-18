@@ -18,13 +18,8 @@ class EmotionalTts(object):
 
         tts_path = pathlib.Path(__file__).parent.resolve()
 
-        # Adjust these paths to your own
-        #base_path = '/Users/wiktoriamronga/TTS/resources/'
-        #output_base_path = "/Users/wiktoriamronga/TTS/output/"
-
         self.base_path = os.path.join(tts_path, "resources/")    
         self.output_base_path = os.path.join(tts_path, "output/")
-
 
         self.emotion_ref_dict = {
             'neutral': '01',
@@ -82,7 +77,7 @@ def main():
 
     # Generate output path
     output_path = EmotionalTts.output_base_path + args.output_path
-    #print(output_path)
+
     # Set to true if you want to use it as a command line tool
     if False:
         print("Generating TTS with emotion: ", args)
