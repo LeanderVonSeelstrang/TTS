@@ -105,6 +105,6 @@ if __name__ == "__main__":
     main()
     
 # Example Usage
-# python project.py "Testing the emotional TTS command line tool." --emotion happy --gender female --output_path happy_output.wav
+# python project.py "Testing the emotional TTS command line tool." --emotion happy --gender female --output_path happy_output.wav --as_command_line_tool
     
-# python project.py "Ewww. Testing the emotional TTS command line tool." --emotion disgust --gender male --output_path disgust_output.wav --intensity
+# python project.py "Ewww. Testing the emotional TTS command line tool." --emotion disgust --gender male --output_path disgust_output.wav --intensity --as_command_line_tool
