@@ -62,12 +62,14 @@ class EmotionalTts(object):
 
 
 def parse_arguments():
+    e_tts = EmotionalTts()
     parser = argparse.ArgumentParser(description="Emotional TTS Command Line Tool")
     parser.add_argument("text", type=str, help="Text to be converted to speech")
-    parser.add_argument("--emotion", type=str, default="neutral", choices=EmotionalTts.emotion_ref_dict.keys(), help="Emotion for TTS (default: neutral)")
+    parser.add_argument("--emotion", type=str, default="neutral", choices=e_tts.emotion_ref_dict.keys(), help="Emotion for TTS (default: neutral)")
     parser.add_argument("--gender", type=str, default="female", choices=["female", "male"], help="Gender for TTS (default: female)")
     parser.add_argument("--intensity", action="store_true", help="Use strong intensity for emotion")
-    parser.add_argument("--output-path", type=str, default="output.wav", help="Output file path (default: output.wav)")
+    parser.add_argument("--output_path", type=str, default="output.wav", help="Output file path (default: output.wav)")
+    parser.add_argument("--as_command_line_tool", action="store_true", help="Use as command line tool (default: False)")
 
     return parser.parse_args()
 
@@ -75,14 +77,15 @@ def parse_arguments():
 def main():
     args = parse_arguments()
 
+    e_tts = EmotionalTts()
     # Generate output path
-    output_path = EmotionalTts.output_base_path + args.output_path
+    output_path = e_tts.output_base_path + args.output_path
 
     # Set to true if you want to use it as a command line tool
-    if False:
+    if args.as_command_line_tool:
         print("Generating TTS with emotion: ", args)
         # Generate TTS
-        EmotionalTts.emotional_tts(args.text, args.emotion, args.gender, args.intensity, output_path, EmotionalTts.tts)
+        e_tts.emotional_tts(args.text, args.emotion, args.gender, args.intensity, output_path, e_tts.tts)
 
 if __name__ == "__main__":
     main()
