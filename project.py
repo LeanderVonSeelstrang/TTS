@@ -5,6 +5,17 @@ import argparse
 import pathlib
 import os
 
+emotion_ref_dict = {
+            'neutral': '01',
+            'calm': '02',
+            'happy': '03',
+            'sad': '04',
+            'angry': '05',
+            'fearful': '06',
+            'disgust': '07',
+            'surprised': '08' 
+        }
+
 class EmotionalTts(object):
 
     # Get device
@@ -62,10 +73,10 @@ class EmotionalTts(object):
 
 
 def parse_arguments():
-    e_tts = EmotionalTts()
+    #e_tts = EmotionalTts()
     parser = argparse.ArgumentParser(description="Emotional TTS Command Line Tool")
     parser.add_argument("text", type=str, help="Text to be converted to speech")
-    parser.add_argument("--emotion", type=str, default="neutral", choices=e_tts.emotion_ref_dict.keys(), help="Emotion for TTS (default: neutral)")
+    parser.add_argument("--emotion", type=str, default="neutral", choices=emotion_ref_dict.keys(), help="Emotion for TTS (default: neutral)")
     parser.add_argument("--gender", type=str, default="female", choices=["female", "male"], help="Gender for TTS (default: female)")
     parser.add_argument("--intensity", action="store_true", help="Use strong intensity for emotion")
     parser.add_argument("--output_path", type=str, default="output.wav", help="Output file path (default: output.wav)")
@@ -75,22 +86,25 @@ def parse_arguments():
 
 
 def main():
-    args = parse_arguments()
-
-    e_tts = EmotionalTts()
+    args = parse_arguments()    
     # Generate output path
-    output_path = e_tts.output_base_path + args.output_path
+    tts_path = pathlib.Path(__file__).parent.resolve()
+
+    base_path = os.path.join(tts_path, "resources/")    
+    output_base_path = os.path.join(tts_path, "output/")
+    output_path = output_base_path + args.output_path
 
     # Set to true if you want to use it as a command line tool
     if args.as_command_line_tool:
         print("Generating TTS with emotion: ", args)
+        e_tts = EmotionalTts()
         # Generate TTS
-        e_tts.emotional_tts(args.text, args.emotion, args.gender, args.intensity, output_path, e_tts.tts)
+        e_tts.emotional_tts(args.text, args.emotion, args.gender, args.intensity, output_path, None) #e_tts.tts)
 
 if __name__ == "__main__":
     main()
     
 # Example Usage
-# python project.py "Testing the emotional TTS command line tool." --emotion happy --gender female --output-path happy_output.wav
+# python project.py "Testing the emotional TTS command line tool." --emotion happy --gender female --output_path happy_output.wav
     
-# python project.py "Ewww. Testing the emotional TTS command line tool." --emotion disgust --gender male --output-path disgust_output.wav --intensity
+# python project.py "Ewww. Testing the emotional TTS command line tool." --emotion disgust --gender male --output_path disgust_output.wav --intensity
