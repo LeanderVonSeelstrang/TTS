@@ -73,7 +73,7 @@ class EmotionalTts(object):
 
 
 def parse_arguments():
-    #e_tts = EmotionalTts()
+
     parser = argparse.ArgumentParser(description="Emotional TTS Command Line Tool")
     parser.add_argument("text", type=str, help="Text to be converted to speech")
     parser.add_argument("--emotion", type=str, default="neutral", choices=emotion_ref_dict.keys(), help="Emotion for TTS (default: neutral)")
@@ -89,8 +89,7 @@ def main():
     args = parse_arguments()    
     # Generate output path
     tts_path = pathlib.Path(__file__).parent.resolve()
-
-    base_path = os.path.join(tts_path, "resources/")    
+    # base_path = os.path.join(tts_path, "resources/")    
     output_base_path = os.path.join(tts_path, "output/")
     output_path = output_base_path + args.output_path
 
