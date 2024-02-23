@@ -157,8 +157,8 @@ python project.py "This is sad" --emotion sad --gender female --output_path sad_
 python project.py "This is sad" --emotion sad --gender male --output_path sad__male.wav --as_command_line_tool
 python project.py "This is angry" --emotion angry --gender female --output_path angry__female.wav --as_command_line_tool
 python project.py "This is angry" --emotion angry --gender male --output_path angry__male.wav --as_command_line_tool
-python project.py "This is fearful" --emotion fearful --strong_intensity --gender female --output_path fearful_strongIntensity_female.wav --as_command_line_tool
-python project.py "This is fearful" --emotion fearful --strong_intensity --gender male --output_path fearful_strongIntensity_male.wav --as_command_line_tool
+python project.py "This is fearful" --emotion fearful --gender female --output_path fearful_female.wav --as_command_line_tool
+python project.py "This is fearful" --emotion fearful --gender male --output_path fearful_male.wav --as_command_line_tool
 python project.py "This is disgust" --emotion disgust --gender female --output_path disgust__female.wav --as_command_line_tool
 python project.py "This is disgust" --emotion disgust --gender male --output_path disgust__male.wav --as_command_line_tool
 python project.py "This is surprised" --emotion surprised --gender female --output_path surprised__female.wav --as_command_line_tool
