@@ -1,8 +1,8 @@
-Filename,Comprehensibility,Emotion precision,Disturbing artifacts,Naturalness,General speech quality,,Mean
+Filename,Comprehensibility,Emotion precision,Disturbing artifacts,Naturalness,General speech quality,,Category Mean
 angry__female.wav,1,0,1,0,2,,"0,8"
 angry__male.wav,4,1,0,1,4,,2
-angry_strongIntensity__female.wav,3,3,1,2,1,,2
-angry_strongIntensity__male.wav,3,3,0,2,2,,2
+angry_strongIntensity__female.wav,2,3,1,2,1,,"1,8"
+angry_strongIntensity__male.wav,3,2,0,2,2,,"1,8"
 basicTTS.wav,1,0,0,0,0,,"0,2"
 calm__female.wav,2,0,2,0,2,,"1,2"
 calm__male.wav,1,0,0,0,1,,"0,4"
@@ -33,7 +33,7 @@ surprised_strongIntensity__male.wav,2,0,1,0,2,,1
 ,,,,,,,
 ,,,,,,,
 Sample Size,,,,,,,
-12,,,,,,,
+13,,,,,,,
 Max,,,,,,,
 4,,,,,,,
 Min,,,,,,,
