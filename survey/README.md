@@ -5,3 +5,4 @@
 3. Die "Emotion precision" ist für die höheren Intensitäten genauer, als für die normalen Intensitäten.
 4. Weniger "Disturbing artifacts" führen zu einer höheren "Naturalness".
 5. Die "Naturalness" ist unabhängig von der "Comprehensibility".
+6. Nicht jede Emotion wird gleich gut getroffen bzw. repräsentiert.
